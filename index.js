@@ -171,6 +171,14 @@ function scoreboard(getInningScorecb, inningcb, numInnings) {
     totalGame.push(`Inning ${i + 1}: Away ${awayScore} - Home ${homeScore}`);
   }
 
+  if (awayScore === homeScore) {
+    totalGame.push(
+      `This game will require extra inning: Away ${awayScore} - Home ${homeScore}`
+    );
+  } else {
+    totalGame.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
+  }
+
   // Use the scoreboard function below to do the following:
   // 1. Receive the callback function `getInningScore` from Task 4 DONE
   // 2. Receive the callback function `inning` from Task 2 DONE
