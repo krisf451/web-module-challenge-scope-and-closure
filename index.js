@@ -37,12 +37,12 @@ console.log(
   
   2. Which of the two uses a closure? How can you tell?
 
-  Counter1 uses a closer, I can tell because when the counter functions tries to incriment the count variable it has to grab it from it's parent
+  Counter1 uses a closure, I can tell because when the counter function tries to increment the count variable it has to grab it from it's parent which causes a closure.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?
 
-     In most scenarios using a private variable would be prefered to keep things to the local scope. Unless you had a specific/intenional reason for keeping the count variable global, than you should keep things in the local scope.
+     In most scenarios using a private variable would be prefered so as to keep things to the local scope. Unless you have a specific/intentional reason for keeping the count variable global, than you should keep things in the local scope.
 */
 
 // counter1 code
@@ -100,7 +100,6 @@ function finalScore(inningcb, numInnings) {
     currentScore["Away"] += inningcb();
   }
   return currentScore;
-  /*Code Here*/
 }
 
 console.log(finalScore(inning, 9));
@@ -115,7 +114,6 @@ function getInningScore(inningcb) {
     Home: inningcb(),
     Away: inningcb()
   };
-  /*Your Code Here */
 }
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
@@ -159,9 +157,32 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScorecb, inningcb, numInnings) {
+  //create a new array where each index will represent an inning played with a score attached
+  let totalGame = [];
+  let homeScore = 0;
+  let awayScore = 0;
+  //loop through creating random scores for each inning
+  for (let i = 0; i < numInnings; i++) {
+    const currentScore = getInningScorecb(inningcb);
+
+    homeScore += currentScore["Home"];
+    awayScore += currentScore["Away"];
+    totalGame.push(`Inning ${i + 1}: Away ${awayScore} - Home ${homeScore}`);
+  }
+
+  // Use the scoreboard function below to do the following:
+  // 1. Receive the callback function `getInningScore` from Task 4 DONE
+  // 2. Receive the callback function `inning` from Task 2 DONE
+  // 3. Receive a number of innings to be played DONE
+  // 4. Return an array where each of it's index values equals a string stating the
+  // Home and Away team's scores for each inning.  Not the cummulative score.
+  // 5. If there's a tie at the end of the innings, add this message containing the score to the end of the array:  "This game will require extra innings: Away 12 - Home 12"  (see tie example below)
+  //    If there isn't a tie, add this message to the end of the array: "Final Score: Away 13 - Home 11"  (see no tie example below)
+  return totalGame;
 }
+
+console.log(scoreboard(getInningScore, inning, 9));
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
 function foo() {
