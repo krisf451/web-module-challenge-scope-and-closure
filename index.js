@@ -32,11 +32,17 @@ console.log(
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+
+  Counter1 code uses a private variable for count, where counter2 makes it a global variable
   
   2. Which of the two uses a closure? How can you tell?
+
+  Counter1 uses a closer, I can tell because when the counter functions tries to incriment the count variable it has to grab it from it's parent
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
+     counter2 be better?
+
+     In most scenarios using a private variable would be prefered to keep things to the local scope. Unless you had a specific/intenional reason for keeping the count variable global, than you should keep things in the local scope.
 */
 
 // counter1 code
